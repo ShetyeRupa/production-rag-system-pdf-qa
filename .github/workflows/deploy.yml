@@ -1,0 +1,17 @@
+name: Update Deployment Status
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  create-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub Deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: "Hugging Face Spaces"
+          target_url: "https://huggingface.co/spaces/ShetyeRupa/rag-research-assistant"
+          description: "Live demo on Hugging Face Spaces"

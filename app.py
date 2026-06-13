@@ -1,9 +1,9 @@
-# app.py - Streamlit UI for Hugging Face Spaces
+# app.py - Streamlit UI for Hugging Face Spaces deployment
 import streamlit as st
 import os
 import tempfile
 from pathlib import Path
-from rag_app import ProductionRAGSystem
+from rag_app import ModernRAGSystem
 
 st.set_page_config(
     page_title="RAG Research Assistant",
@@ -35,7 +35,7 @@ with st.sidebar:
     
     if st.button("Initialize RAG System"):
         if uploaded_files:
-            with st.spinner("Processing PDFs and building vector database..."):
+            with st.spinner("Processing PDFs and building vector database... This may take 3-5 minutes on first run."):
                 # Save uploaded files temporarily
                 pdf_dir = Path("./uploaded_pdfs")
                 pdf_dir.mkdir(exist_ok=True)
@@ -46,7 +46,7 @@ with st.sidebar:
                         f.write(uploaded_file.getbuffer())
                 
                 # Initialize RAG system with uploaded PDFs
-                st.session_state.rag_system = ProductionRAGSystem(
+                st.session_state.rag_system = ModernRAGSystem(
                     pdf_directory=str(pdf_dir),
                     chunk_size=1000,
                     chunk_overlap=200,

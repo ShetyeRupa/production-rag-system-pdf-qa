@@ -111,7 +111,7 @@ Save the provided `rag_app.py` in your project directory.
 The system can be configured by modifying parameters in the `main()` function:
 
 ```python
-system = ProductionRAGSystem(
+system = ModernRAGSystem(
     pdf_directory="./pdfs",           # Directory containing PDF files
     chunk_size=1000,                  # Size of each text chunk (characters)
     chunk_overlap=200,                # Overlap between consecutive chunks

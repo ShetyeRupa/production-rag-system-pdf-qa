@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  deployments: write
+  contents: read
+
 jobs:
   create-deployment:
     runs-on: ubuntu-latest
@@ -13,5 +17,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: "Hugging Face Spaces"
-          target_url: "https://huggingface.co/spaces/ShetyeRupa/rag-research-assistant"
+          environment-url: "https://huggingface.co/spaces/ShetyeRupa/rag-research-assistant"
           description: "Live demo on Hugging Face Spaces"
+          initial-status: "success"
